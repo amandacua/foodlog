@@ -1,5 +1,5 @@
 <% content_for :title do%>
-  Foodlog &ndash; <%= DateTime.now%>
+  Foodlog &ndash; <%= DateTime.now.to_s(:nice_date)%>
   <% end %>
 
 
@@ -8,7 +8,7 @@
       <div class = "column is-one-quarter">
          <div class = "card">
           <header clas = "card-header">
-            <%= enter.meal_type %>
+            <p class = "card-header-title"> <%= enter.meal_type %> </p>
           </header>
           <div class = "card-content">
               <div class = "content">
@@ -16,13 +16,14 @@
                 <p><span class = "has-text-weight-bold"><%= enter.proteins %></span>grams of protein</p>
                 <p><span class = "has-text-weight-bold"><%= enter.carbohydrates %></span>grams of carbohydrates</p>
                 <p><span class = "has-text-weight-bold"><%= enter.fats %></span>grams of fats</p>
+                <p class = "itallic">Logged <%= time_ago_in_words(enter.created_at)%> ago </p>
               </div>
           </div>
 
           <div class = "card-footer" >
-            <%= link_to 'Show', enter %>
-            <%= link_to 'Edit', edit_enter_path(enter) %>
-            <%= link_to 'Destroy', enter, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Show', enter, class: 'card-footer-item' %>
+              <%= link_to 'Edit', edit_enter_path(enter), class: 'card-footer-item' %>
+              <%= link_to 'Destroy', enter, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-footer-item' %>
           </div>
         </div>
       </div>
