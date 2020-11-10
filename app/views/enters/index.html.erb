@@ -1,35 +1,30 @@
-<p id="notice"><%= notice %></p>
+<% content_for :title do%>
+  Foodlog &ndash; <%= DateTime.now%>
+  <% end %>
 
-<h1>Enters</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Meal type</th>
-      <th>Calories</th>
-      <th>Proteins</th>
-      <th>Carbohydrates</th>
-      <th>Fats</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class = "columns mt-6 is-centered">
     <% @enters.each do |enter| %>
-      <tr>
-        <td><%= enter.meal_type %></td>
-        <td><%= enter.calories %></td>
-        <td><%= enter.proteins %></td>
-        <td><%= enter.carbohydrates %></td>
-        <td><%= enter.fats %></td>
-        <td><%= link_to 'Show', enter %></td>
-        <td><%= link_to 'Edit', edit_enter_path(enter) %></td>
-        <td><%= link_to 'Destroy', enter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class = "column is-one-quarter">
+         <div class = "card">
+          <header clas = "card-header">
+            <%= enter.meal_type %>
+          </header>
+          <div class = "card-content">
+              <div class = "content">
+                <p><span class = "has-text-weight-bold"><%= enter.calories %></span> calories </p>
+                <p><span class = "has-text-weight-bold"><%= enter.proteins %></span>grams of protein</p>
+                <p><span class = "has-text-weight-bold"><%= enter.carbohydrates %></span>grams of carbohydrates</p>
+                <p><span class = "has-text-weight-bold"><%= enter.fats %></span>grams of fats</p>
+              </div>
+          </div>
+
+          <div class = "card-footer" >
+            <%= link_to 'Show', enter %>
+            <%= link_to 'Edit', edit_enter_path(enter) %>
+            <%= link_to 'Destroy', enter, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Enter', new_enter_path %>
+</div>
