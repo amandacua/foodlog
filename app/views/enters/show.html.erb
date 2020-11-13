@@ -29,8 +29,11 @@
     </nav>
     <div class = "columns is-mobile">
       <div class = "column">
-        <%= link_to 'Edit', edit_enter_path(@enter) %> |
-        <%= link_to 'Back', enters_path %>
+        <%= link_to 'Edit', edit_enter_path(@enter), class: "button is-gray" %>
+        <%= link_to 'Delete', enter_path(@enter), method: :delete, data: {confirm: "Are you sure?"}, class: 'button is-gray' %>
+
+        <%= link_to 'Back', enters_path, class: "button is-gray"  %>
+        
       </div>
     </div>
   </div>

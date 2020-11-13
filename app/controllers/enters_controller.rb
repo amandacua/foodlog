@@ -4,7 +4,7 @@ class EntersController < ApplicationController
   # GET /enters
   # GET /enters.json
   def index
-    @enters = Enter.all
+    @enters = Enter.where("created_at >= ?", Date.today)
   end
 
   # GET /enters/1
